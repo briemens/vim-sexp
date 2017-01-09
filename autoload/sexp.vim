@@ -1722,15 +1722,15 @@ function! sexp#opening_insertion(bra)
     if prev =~# '\v\S'
         \ && prev !~# s:opening_bracket
         \ && !s:is_macro_char(prev)
-        let buf .= ' '
+        let buf .= ''
     endif
 
     let buf .= a:bra . ket
     let buftail .= "\<C-G>U\<Left>"
 
     if cur =~# '\v\S' && cur !~# s:closing_bracket
-        let buf .= ' '
-        let buftail .= "\<C-G>U\<Left>"
+        let buf .= ''
+        " let buftail .= "\<C-G>U\<Left>"
     endif
 
     return buf . buftail
@@ -1821,15 +1821,15 @@ function! sexp#quote_insertion(quote)
         if prev =~# '\v\S'
             \ && prev !~# s:opening_bracket
             \ && !s:is_macro_char(prev)
-            let buf .= ' '
+            let buf .= ''
         endif
 
         let buf .= a:quote . a:quote
         let buftail .= "\<C-G>U\<Left>"
 
         if cur =~# '\v\S' && cur !~# s:closing_bracket
-            let buf .= ' '
-            let buftail .= "\<C-G>U\<Left>"
+            let buf .= ''
+            " let buftail .= "\<C-G>U\<Left>"
         endif
 
         return buf . buftail
